@@ -3,4 +3,5 @@ export interface Book {
     read: boolean;
     price: number;
     title: string;
+    description?: string;
 }

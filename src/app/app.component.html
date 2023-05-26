@@ -1,18 +1,20 @@
-<app-book-component *ngFor="let book of bookList" [book]="book"></app-book-component>
-
 <table>
         <thead>
                 <tr>
                         <th>Title</th>
                         <th>Price</th>
                         <th>Read</th>
+                        <th>Variable check</th>
+                        <th>Description</th>
                 </tr>
         </thead>
         <tbody>
-                <tr *ngFor="let book of bookList">
+                <tr *ngFor="let book of bookService.getBookList(); let i = index">
                         <td>{{book.title}}</td>
                         <td>{{book.price}}</td>
-                        <td><input type="checkbox" [checked]="book.read" (change)="book.read = !book.read"> </td>
+                        <td><input type="checkbox" [checked]="book.read" (change)="handleCheckboxClick(i)"> </td>
+                        <td>{{book.read}}</td>
+                        <td><app-hideable-content>{{book.description}}</app-hideable-content></td>
                 </tr>
         </tbody>
 </table>

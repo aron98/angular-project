@@ -1,36 +1,21 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { BookComponentComponent } from "./book-component/book-component.component";
-import { Book } from "./book";
+import {BookLogicService} from "./book-logic.service";
+import {HideableContentComponent} from "./hideable-content/hideable-content.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [CommonModule, RouterOutlet, BookComponentComponent],
+    imports: [CommonModule, RouterOutlet, HideableContentComponent],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
-    bookList: Book[] = [
-        {
-            id: 1,
-            read: false,
-            price: 10,
-            title: "Example Book"
-        },
-        {
-            id: 2,
-            read: true,
-            price: 100,
-            title: "Example Book 2"
-        },
-        {
-            id: 3,
-            read: false,
-            price: 123,
-            title: "Example Book 3"
-        }
-    ];
+    public readonly bookService = inject(BookLogicService);
+
+    public handleCheckboxClick(index : number) : void {
+        this.bookService.toggleRead(index);
+    }
 }
