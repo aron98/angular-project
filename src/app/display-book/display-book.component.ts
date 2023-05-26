@@ -11,20 +11,25 @@ import { Book } from '../book';
   templateUrl: './display-book.component.html',
   styleUrls: ['./display-book.component.css']
 })
-export default class DisplayBookComponent  implements OnInit, OnChanges{
+export default class DisplayBookComponent  implements OnInit{
   constructor(private route: ActivatedRoute) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  /* ngOnChanges(changes: SimpleChanges): void {
     const bookId = this.route.snapshot.paramMap.get('bookId');
     this.book = this.bookServices.getBookById(bookId);
-  }
+  } */
 
   readonly bookServices = inject(BookLogicService);
   book?: Book;
 
   public ngOnInit() {
-    const bookId = this.route.snapshot.paramMap.get('bookId');
-    this.book = this.bookServices.getBookById(bookId);
+    this.route.params.subscribe(routeParams => 
+      {
+        const bookId =  routeParams['bookId'];
+        this.book = this.bookServices.getBookById(bookId); 
+      });
+    /* const bookId =  this.route.snapshot.paramMap.get('bookId');
+    this.book = this.bookServices.getBookById(bookId); */
     }
 
 }
