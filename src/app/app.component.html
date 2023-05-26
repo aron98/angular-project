@@ -3,6 +3,7 @@
                 <tr>
                         <th>Title</th>
                         <th>Price</th>
+                        <th>Author</th>
                         <th>Read</th>
                         <th>Variable check</th>
                         <th>Description</th>
@@ -10,8 +11,9 @@
         </thead>
         <tbody>
                 <tr *ngFor="let book of bookService.getBookList(); let i = index">
-                        <td>{{book.title}}</td>
+                        <td (click)="navigateToBook(book.id)">{{book.title}}</td>
                         <td>{{book.price}}</td>
+                        <td>{{book.author}}</td>
                         <td><input type="checkbox" [checked]="book.read" (change)="handleCheckboxClick(i)"> </td>
                         <td>{{book.read}}</td>
                         <td><app-hideable-content>{{book.description}}</app-hideable-content></td>
