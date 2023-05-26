@@ -1,6 +1,20 @@
-<app-book-component
-        *ngFor="let book of bookList"
-        [book]="book"
-></app-book-component>
+<app-book-component *ngFor="let book of bookList" [book]="book"></app-book-component>
+
+<table>
+        <thead>
+                <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Read</th>
+                </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let book of bookList">
+                        <td>{{book.title}}</td>
+                        <td>{{book.price}}</td>
+                        <td><input type="checkbox" [checked]="book.read" (change)="book.read = !book.read"> </td>
+                </tr>
+        </tbody>
+</table>
 
 <router-outlet></router-outlet>
