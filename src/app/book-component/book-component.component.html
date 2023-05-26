@@ -1,5 +1,12 @@
 <div>
     <h1>{{book.title}}</h1>
-    <p>Price: <span class="red">{{book.price}} Ft</span></p>
-    <p>Read status: {{book.read ? "read" : "not read"}}</p>
+    <p>Price: <span class="blue">{{book.price}} Ft</span></p>
+
+    <label> Read status: </label>
+    <input type="checkbox" [checked]="book.read" (change)="book.read = !book.read">
+    <p>{{book.read}}</p>
+
+    <!-- <span *ngIf="items.length > 0">{{ items.length }} Items</span> -->
+
+
 </div>

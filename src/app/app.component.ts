@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterOutlet} from '@angular/router';
-import {BookComponentComponent} from "./book-component/book-component.component";
-import {Book} from "./book";
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { BookComponentComponent } from "./book-component/book-component.component";
+import { Book } from "./book";
 
 @Component({
     selector: 'app-root',
@@ -11,6 +11,7 @@ import {Book} from "./book";
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
     bookList: Book[] = [
         {
@@ -24,6 +25,12 @@ export class AppComponent {
             read: true,
             price: 100,
             title: "Example Book 2"
+        },
+        {
+            id: 3,
+            read: false,
+            price: 123,
+            title: "Example Book 3"
         }
     ];
 }
